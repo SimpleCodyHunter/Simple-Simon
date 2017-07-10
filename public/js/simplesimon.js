@@ -49,21 +49,26 @@ otherwise game continues. computer adds another number to string and displays or
 	function addColorToPattern(){
 		randomNum = Math.floor(Math.random() * 4) + 1;
 		pattern.push(randomNum)
-		console.log(pattern);
+		console.log("adding " + pattern + " to array");
 
 	}
 
 	function addColorToUserPattern(){
 		userPattern.push(this.dataset.value);
-		comparePatterns();
-		console.log(userPattern);
+		if (pattern.length === userPattern.length){
+			comparePatterns();	
+		}
+		console.log("adding " + userPattern + " to array");
 	}
 
 	function comparePatterns() {
 		for (var i = 0; i < pattern.length; i++) {
 			if (pattern[i] == userPattern[i]){
-				console.log("YES");
+				console.log(pattern[i] + " and " + userPattern[i] + " match!!!");
+				setTimeout(function(){
 				addColorToPattern();
+				animatePattern()
+				}, 200);
 			} else {
 				// gameOver();
 				console.log("GAME OVER");
@@ -91,7 +96,7 @@ otherwise game continues. computer adds another number to string and displays or
 				if (count <= max) {
 					switch (pattern[count]) {
 						case 1:
-							console.log("case 1")
+							console.log("animating red")
 							$("#red").css("background-color", "red");
 							setTimeout(function(){
 								$("#red").css("background-color", "f96868");
@@ -99,7 +104,7 @@ otherwise game continues. computer adds another number to string and displays or
 							count++;
 							break;
 						case 2:
-							console.log("case 2")
+							console.log("animating blue")
 							$("#blue").css("background-color", "blue");
 								setTimeout(function(){
 								$("#blue").css("background-color", "7167fc");
@@ -107,7 +112,7 @@ otherwise game continues. computer adds another number to string and displays or
 							count++;
 							break;
 						case 3:
-							console.log("case 3")
+							console.log("animating green")
 							$("#green").css("background-color", "green");
 								setTimeout(function(){
 								$("#green").css("background-color", "8ff791");
@@ -115,7 +120,7 @@ otherwise game continues. computer adds another number to string and displays or
 							count++;
 							break;
 						case 4:
-							console.log("case 4")
+							console.log("animating yellow")
 							$("#yellow").css("background-color", "yellow");
 								setTimeout(function(){
 								$("#yellow").css("background-color", "f7f78f");
