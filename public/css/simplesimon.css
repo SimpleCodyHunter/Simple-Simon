@@ -1,5 +1,6 @@
 #container{
-	border: solid black;
+	
+	margin: 20px;
 }
 .button {
 	height: 200px;
@@ -9,18 +10,18 @@
 	float: left;
 }
 #red {
-	background-color: red;
+	background-color: #f96868;
 
 }
 #blue {
-	background-color: blue;
+	background-color: #7167fc
 
 }
 #green {
-	background-color: green;
+	background-color: #8ff791;
 	clear: left;
 }
 #yellow {
-	background-color: yellow;
+	background-color: #f7f78f
 
 }
