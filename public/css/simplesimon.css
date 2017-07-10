@@ -1,0 +1,26 @@
+#container{
+	border: solid black;
+}
+.button {
+	height: 200px;
+	width: 200px;
+	margin-left: 200px;
+	position: relative;
+	float: left;
+}
+#red {
+	background-color: red;
+
+}
+#blue {
+	background-color: blue;
+
+}
+#green {
+	background-color: green;
+	clear: left;
+}
+#yellow {
+	background-color: yellow;
+
+}
