@@ -49,32 +49,32 @@ otherwise game continues. computer adds another number to string and displays or
 	function addColorToPattern(){
 		randomNum = Math.floor(Math.random() * 4) + 1;
 		pattern.push(randomNum)
-		console.log("adding " + pattern + " to array");
+		console.log("adding " + randomNum + " to array");
+		animatePattern()
 
 	}
 
 	function addColorToUserPattern(){
 		userPattern.push(this.dataset.value);
-		if (pattern.length === userPattern.length){
-			comparePatterns();	
+		$(this).css("opacity", "1");
+		console.log(this);
+		if (pattern.length == userPattern.length) {
+			comparePatterns();
 		}
-		console.log("adding " + userPattern + " to array");
 	}
 
-	function comparePatterns() {
-		for (var i = 0; i < pattern.length; i++) {
-			if (pattern[i] == userPattern[i]){
-				console.log(pattern[i] + " and " + userPattern[i] + " match!!!");
-				setTimeout(function(){
-				addColorToPattern();
-				animatePattern()
-				}, 200);
-			} else {
-				// gameOver();
-				console.log("GAME OVER");
-			}
+
+	function comparePatterns () {
+		// var userString =
+		if (userPattern.toString() == pattern.toString()) {
+			addColorToPattern();
+			userPattern = [];
+			console.log("success");
+		} else {
+			console.log("wrong")
+			gameOver();
 		}
-	}
+	};
 	function gameOver() {
 		pattern = [];
 		userPattern = [];
@@ -83,41 +83,47 @@ otherwise game continues. computer adds another number to string and displays or
 	$("#start").click(startGame);
 
 	function startGame(){
-			addColorToPattern()
-			animatePattern()
+		pattern = [];
+		userPattern = [];
+		addColorToPattern()
+
 	}
 
 
-	function animatePattern(){
-		 	var count = 0;
-			var max = 4;
-			var interval = 800;
+	function animatePattern() {
+			var count = 0;
+			var delay = 850;
 			var intervalId = setInterval(function () {
-				if (count <= max) {
+				if (count >= pattern.length)  {
+					clearInterval(intervalId);
+				}
 					switch (pattern[count]) {
 						case 1:
-							console.log("animating red")
+							console.log("animating red current count is " + count)
 							$("#red").css("background-color", "red");
 							setTimeout(function(){
 								$("#red").css("background-color", "f96868");
 							}, 800);
 							count++;
+							console.log(count);
 							break;
 						case 2:
-							console.log("animating blue")
+							console.log("animating blue current count is " + count)
 							$("#blue").css("background-color", "blue");
 								setTimeout(function(){
 								$("#blue").css("background-color", "7167fc");
 							}, 800);
 							count++;
+							console.log(count);
 							break;
 						case 3:
-							console.log("animating green")
+							console.log("animating green current count is " + count)
 							$("#green").css("background-color", "green");
 								setTimeout(function(){
 								$("#green").css("background-color", "8ff791");
 							}, 800);
 							count++;
+							console.log(count);
 							break;
 						case 4:
 							console.log("animating yellow")
@@ -126,13 +132,10 @@ otherwise game continues. computer adds another number to string and displays or
 								$("#yellow").css("background-color", "f7f78f");
 							}, 800);
 							count++;
+							console.log(count);
 							break;
 						}
-					} else {
-						// clearInterval(intervalId);
-					}
-
-		}, interval);
+		}, delay);
 	}
 
 

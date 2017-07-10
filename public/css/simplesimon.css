@@ -1,5 +1,5 @@
 #container{
-	
+
 	margin: 20px;
 }
 .buttons {
@@ -8,20 +8,24 @@
 	margin-left: 200px;
 	position: relative;
 	float: left;
+	opacity: .5;
 }
 #red {
-	background-color: #f96868;
+	background-color: red;
 
 }
 #blue {
-	background-color: #7167fc
+	background-color: blue;
 
 }
 #green {
-	background-color: #8ff791;
+	background-color: green;
 	clear: left;
 }
 #yellow {
-	background-color: #f7f78f
+	background-color: yellow;
 
+}
+.buttonclick {
+	opacity: 1;
 }
