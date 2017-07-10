@@ -37,7 +37,7 @@ otherwise game continues. computer adds another number to string and displays or
 	var yellow = 4;
 	var randomNum;
 	var pattern = [];
-	var userchoice = [];
+	var userPattern = [];
 	var buttons = $(".buttons")
 
 
@@ -55,11 +55,53 @@ otherwise game continues. computer adds another number to string and displays or
 	}
 
 	function addColorToUserPattern(){
+
 	}
 
 	function comparePatterns(){
 
 	}
+
+	function startGame(){
+
+	}
+
+	function animatePattern(){
+		$.each(pattern,function(index, element) {
+			switch (element) {
+				case 1:
+					console.log("case 1")
+					$("#red").css("background-color", "red");
+					setTimeout(function(){
+						$("#red").css("background-color", "f96868");
+					}, 2000);
+					break;
+				case 2:
+					console.log("case 2")
+					$("#blue").css("background-color", "blue");
+						setTimeout(function(){
+						$("#blue").css("background-color", "7167fc");
+					}, 2000);
+					break;
+				case 3:
+					console.log("case 3")
+					$("#green").css("background-color", "green");
+						setTimeout(function(){
+						$("#green").css("background-color", "8ff791");
+					}, 2000);
+					break;
+				case 4:
+					console.log("case 4")
+					$("#yellow").css("background-color", "yellow");
+						setTimeout(function(){
+						$("#yellow").css("background-color", "f7f78f");
+					}, 2000);
+					break;
+			}
+		});
+	}
+
+
 
 
 
