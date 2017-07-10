@@ -36,35 +36,52 @@ otherwise game continues. computer adds another number to string and displays or
 	var green = 3;
 	var yellow = 4;
 	var randomNum;
-	var pattern = [1,2,4,2];
+	var pattern = [];
 	var userPattern = [];
 	var buttons = $(".buttons")
 
 
-	buttons.click(function(){
-		// light up and add number to array
 
-	});
 
+	$(".buttons").click(addColorToUserPattern);
 
 
 	function addColorToPattern(){
 		randomNum = Math.floor(Math.random() * 4) + 1;
 		pattern.push(randomNum)
+		console.log(pattern);
 
 	}
 
 	function addColorToUserPattern(){
-
+		userPattern.push(this.dataset.value);
+		comparePatterns();
+		console.log(userPattern);
 	}
 
-	function comparePatterns(){
-
+	function comparePatterns() {
+		for (var i = 0; i < pattern.length; i++) {
+			if (pattern[i] == userPattern[i]){
+				console.log("YES");
+				addColorToPattern();
+			} else {
+				// gameOver();
+				console.log("GAME OVER");
+			}
+		}
 	}
+	function gameOver() {
+		pattern = [];
+		userPattern = [];
+	}
+
+	$("#start").click(startGame);
 
 	function startGame(){
-
+			addColorToPattern()
+			animatePattern()
 	}
+
 
 	function animatePattern(){
 		 	var count = 0;
