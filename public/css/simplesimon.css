@@ -7,34 +7,47 @@ body {
 	margin: 20px;
 }
 .buttons {
-	height: 200px;
-	width: 200px;
-	margin-left: 200px;
+	height: 162px;
+	width: 190px;
+	margin-left: -1px;
 	position: relative;
 	float: left;
 	opacity: .5;
+	background-image: url("../img/buttons.png");
+	background-repeat: no-repeat;
 	
 }
 #red {
-	/*background: url("img/buttons.png") 0 -45px;*/
-	background-color: red;
+	background-position: -3px -5px;
+	margin-left: 440px;
 
 }
+
 #blue {
-/*	background-image: url("img/buttons.png");
-*/	background-color: #0058ff;
+	background-position: -405px -5px;
 
 }
 #green {
-/*	background-image: url("img/buttons.png");
-*/	background-color: #10f610;
+	background-position: -205px -5px;
+	margin-top: -33px;
+	margin-left: 540px;
 	clear: left;
 }
 #yellow {
-/*	background-image: url("img/buttons.png");
-*/	background-color: yellow;
+	background-position: -605px -5px;
+	margin-top: -33px;
 
 }
 .buttonclick {
 	opacity: 1;
 }
+.pushbutton{
+	animation: sprite 2s steps(2);
+  	animation-delay: 1s;
+  	animation-iteration-count: infinite;
+  	/*animation-iteration-count: 31;*/
+}
+@keyframes sprite {
+ 100% {
+   background-position-y: -413px;
+ }
