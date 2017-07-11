@@ -2,7 +2,8 @@ body {
 	background-color: #000;
 }
 #container{
-
+	width: 1000px;
+	height: 600px;
 	margin: 20px;
 }
 .buttons {
@@ -12,21 +13,26 @@ body {
 	position: relative;
 	float: left;
 	opacity: .5;
+	
 }
 #red {
+	/*background: url("img/buttons.png") 0 -45px;*/
 	background-color: red;
 
 }
 #blue {
-	background-color: #0058ff;
+/*	background-image: url("img/buttons.png");
+*/	background-color: #0058ff;
 
 }
 #green {
-	background-color: #10f610;
+/*	background-image: url("img/buttons.png");
+*/	background-color: #10f610;
 	clear: left;
 }
 #yellow {
-	background-color: yellow;
+/*	background-image: url("img/buttons.png");
+*/	background-color: yellow;
 
 }
 .buttonclick {

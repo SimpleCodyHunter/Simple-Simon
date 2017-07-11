@@ -6,6 +6,8 @@
 	var buttons = $(".buttons")
 	var gameOvervar;
 	var turnCount = 0;
+	var delay = 450;
+	var tran = delay - 50;
 
 
 	function startGame(){
@@ -34,7 +36,6 @@
 
 	function animatePattern() {
 		console.log("animatePattern has been called")
-		var delay = 450;
 		var count = 0;
 		var intervalId = setInterval(function () {
 			if (count >= pattern.length)  {
@@ -47,7 +48,7 @@
 				$("#red").css("opacity", "1");
 				setTimeout(function(){
 					$("#red").css("opacity", ".5");
-				}, 400);
+				}, tran);
 				count++;
 				break;
 				case 2:
@@ -55,7 +56,7 @@
 				$("#blue").css("opacity", "1");
 				setTimeout(function(){
 					$("#blue").css("opacity", ".5");
-				}, 400);
+				}, tran);
 				count++;
 				break;
 				case 3:
@@ -63,7 +64,7 @@
 				$("#green").css("opacity", "1");
 				setTimeout(function(){
 					$("#green").css("opacity", ".5");
-				}, 400);
+				}, tran);
 				count++;
 				break;
 				case 4:
@@ -71,7 +72,7 @@
 				$("#yellow").css("opacity", "1");
 				setTimeout(function(){
 					$("#yellow").css("opacity", ".5");
-				}, 400);
+				}, tran);
 				count++;
 				break;
 			}
@@ -102,6 +103,7 @@
 			console.log("you win the round");
 			userPattern = [];
 			turnCount = 0;
+			delay -= 10;
 			addColorToPattern();
 		} else if (userPattern[turnCount] == pattern[turnCount]) {
 			turnCount += 1;
@@ -118,6 +120,7 @@
 		buttons.off("click", addColorToUserPattern);
 		pattern = [];
 		userPattern = [];
+		delay = 450;
 		buttons.css("opacity", ".2");
 	}
 
