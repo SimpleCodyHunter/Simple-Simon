@@ -7,7 +7,32 @@
 	var gameOvervar;
 	var turnCount = 0;
 	var delay = 450;
-	var tran = delay - 50;
+	var tran = (.72 * delay);
+
+	$(document).keyup(function(e) {
+  if(e.which == 82) {
+   var val = 1;
+	 addColorToUserPattern(val);
+  }
+	});
+$(document).keyup(function(e) {
+  if(e.which == 70) {
+   var val = 2;
+	 addColorToUserPattern(val);
+  }
+	});
+$(document).keyup(function(e) {
+  if(e.which == 85) {
+   var val = 3;
+	 addColorToUserPattern(val);
+  }
+	});
+$(document).keyup(function(e) {
+  if(e.which == 74) {
+   var val = 4;
+	 addColorToUserPattern(val);
+  }
+	});
 
 
 	function startGame(){
@@ -96,6 +121,28 @@
 				}.bind(this), 300);
 			}
 		}
+
+		function addKeyPressToUserPattern(val){
+			console.log("addKeyPressToUserPattern has been called")
+			userPattern.push(val);
+				$(this).css("opacity", "1");
+				console.log("=============this opacity is totally 1 now")
+				comparePatterns()
+				if (gameOvervar == true) {
+					$(this).css("opacity", ".2");
+				} else {
+					console.log(gameOvervar + " is totally false")
+					setTimeout(function(){
+						$(this).css("opacity", ".5");
+						console.log("changing opactiy of this to .5")
+					}.bind(this), 300);
+				}
+			}
+
+	function animateButton() {
+
+	}
+
 
 
 	function comparePatterns(){
