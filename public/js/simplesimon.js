@@ -56,11 +56,17 @@ otherwise game continues. computer adds another number to string and displays or
 
 	function addColorToUserPattern(){
 		userPattern.push(this.dataset.value);
-		$(this).css("opacity", "1");
-		console.log(this);
-		if (pattern.length == userPattern.length) {
-			comparePatterns();
-		}
+			$(this).css("opacity", "1");
+			console.log(this);
+			setTimeout(function(){
+				$(this).css("opacity", ".5");
+				console.log(this);
+				setTimeout(function(){
+					if (pattern.length == userPattern.length) {
+					comparePatterns();	
+					}
+				}, 2000);
+			}.bind(this), 1000);		
 	}
 
 
@@ -100,36 +106,36 @@ otherwise game continues. computer adds another number to string and displays or
 					switch (pattern[count]) {
 						case 1:
 							console.log("animating red current count is " + count)
-							$("#red").css("background-color", "red");
+							$("#red").css("opacity", "1");
 							setTimeout(function(){
-								$("#red").css("background-color", "f96868");
+								$("#red").css("opacity", ".5");
 							}, 800);
 							count++;
 							console.log(count);
 							break;
 						case 2:
 							console.log("animating blue current count is " + count)
-							$("#blue").css("background-color", "blue");
+							$("#blue").css("opacity", "1");
 								setTimeout(function(){
-								$("#blue").css("background-color", "7167fc");
+								$("#blue").css("opacity", ".5");
 							}, 800);
 							count++;
 							console.log(count);
 							break;
 						case 3:
 							console.log("animating green current count is " + count)
-							$("#green").css("background-color", "green");
+							$("#green").css("opacity", "1");
 								setTimeout(function(){
-								$("#green").css("background-color", "8ff791");
+								$("#green").css("opacity", ".5");
 							}, 800);
 							count++;
 							console.log(count);
 							break;
 						case 4:
 							console.log("animating yellow")
-							$("#yellow").css("background-color", "yellow");
+							$("#yellow").css("opacity", "1");
 								setTimeout(function(){
-								$("#yellow").css("background-color", "f7f78f");
+								$("#yellow").css("opacity", ".5");
 							}, 800);
 							count++;
 							console.log(count);
