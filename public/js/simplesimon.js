@@ -1,21 +1,22 @@
 // $(document).ready(function(){
 	"use strict"
-
-	var red = 1;
-	var blue = 2;
-	var green = 3;
-	var yellow = 4;
 	var randomNum;
 	var pattern = [];
 	var userPattern = [];
 	var buttons = $(".buttons")
 	var gameOvervar;
+	var turnCount = 0;
 
 
-
-
-
-
+	function startGame(){
+		gameOvervar = false
+		console.log("startGame has been called")
+		buttons.on("click", addColorToUserPattern);
+		buttons.css("opacity", ".5");
+		pattern = [];
+		userPattern = [];
+		addColorToPattern()
+	}
 
 
 	function addColorToPattern(){
@@ -30,6 +31,52 @@
 		}, 1000)
 	}
 
+
+	function animatePattern() {
+		console.log("animatePattern has been called")
+		var delay = 450;
+		var count = 0;
+		var intervalId = setInterval(function () {
+			if (count >= pattern.length)  {
+				clearInterval(intervalId);
+				console.log("clearInterval(intervalID) has been called")
+			}
+			switch (pattern[count]) {
+				case 1:
+				console.log("animating red current count is " + count)
+				$("#red").css("opacity", "1");
+				setTimeout(function(){
+					$("#red").css("opacity", ".5");
+				}, 400);
+				count++;
+				break;
+				case 2:
+				console.log("animating blue current count is " + count)
+				$("#blue").css("opacity", "1");
+				setTimeout(function(){
+					$("#blue").css("opacity", ".5");
+				}, 400);
+				count++;
+				break;
+				case 3:
+				console.log("animating green current count is " + count)
+				$("#green").css("opacity", "1");
+				setTimeout(function(){
+					$("#green").css("opacity", ".5");
+				}, 400);
+				count++;
+				break;
+				case 4:
+				console.log("animating yellow current count is " + count)
+				$("#yellow").css("opacity", "1");
+				setTimeout(function(){
+					$("#yellow").css("opacity", ".5");
+				}, 400);
+				count++;
+				break;
+			}
+		}, delay);
+	}
 
 
 	function addColorToUserPattern(){
@@ -48,17 +95,18 @@
 				}.bind(this), 300);
 			}
 		}
+
+
 	function comparePatterns(){
-		if (pattern.length == userPattern.length) {
-			console.log("current pattern array is " + pattern)
-			console.log("current user pattern array is " + userPattern)
-			if (userPattern.toString() === pattern.toString()) {
-				console.log("comparePatterns has been called")
-				console.log("success");
-				userPattern = [];
-				addColorToPattern();
+		if ((pattern.length == userPattern.length) && (userPattern.toString() === pattern.toString())) {
+			console.log("you win the round");
+			userPattern = [];
+			turnCount = 0;
+			addColorToPattern();
+		} else if (userPattern[turnCount] == pattern[turnCount]) {
+			turnCount += 1;
 			} else {
-				console.log("userpattern does not equal pattern")
+				console.log("you lose")
 				gameOver();
 			}
 		}
@@ -73,17 +121,9 @@
 		buttons.css("opacity", ".2");
 	}
 
+
 	$("#start").click(startGame);
 
-	function startGame(){
-		gameOvervar = false
-		console.log("startGame has been called")
-		buttons.on("click", addColorToUserPattern);
-		buttons.css("opacity", ".5");
-		pattern = [];
-		userPattern = [];
-		addColorToPattern()
-	}
 
 
 
@@ -98,51 +138,6 @@
 
 
 
-	function animatePattern() {
-		console.log("animatePattern has been called")
-			var delay = 450;
-			var count = 0;
-			var intervalId = setInterval(function () {
-				if (count >= pattern.length)  {
-					clearInterval(intervalId);
-					console.log("clearInterval(intervalID) has been called")
-				}
-					switch (pattern[count]) {
-						case 1:
-							console.log("animating red current count is " + count)
-							$("#red").css("opacity", "1");
-							setTimeout(function(){
-								$("#red").css("opacity", ".5");
-							}, 400);
-							count++;
-							break;
-						case 2:
-							console.log("animating blue current count is " + count)
-							$("#blue").css("opacity", "1");
-								setTimeout(function(){
-								$("#blue").css("opacity", ".5");
-							}, 400);
-							count++;
-							break;
-						case 3:
-							console.log("animating green current count is " + count)
-							$("#green").css("opacity", "1");
-								setTimeout(function(){
-								$("#green").css("opacity", ".5");
-							}, 400);
-							count++;
-							break;
-						case 4:
-							console.log("animating yellow current count is " + count)
-							$("#yellow").css("opacity", "1");
-								setTimeout(function(){
-								$("#yellow").css("opacity", ".5");
-							}, 400);
-							count++;
-							break;
-						}
-		}, delay);
-	}
 
 
 
