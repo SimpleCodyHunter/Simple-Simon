@@ -1,36 +1,6 @@
 // $(document).ready(function(){
 	"use strict"
-/* ___________PSEUDO CODE___________________
 
-pick a random number between 1 and 4
-
-1 = red
-2 = blue
-3 = green
-4 = yellow
-
-		// switch (randomNum)
-		// case 1
-		// // light up red
-		// case 2
-		// // light up blue
-		// case 3
-		// // light up green
-		// case 4
-		// // light up yellow
-		// return pattern
-
-add random number to string. this string = computer pattern
-
-when number is added to screen display on screen color change for number by turning color on then off for 1 second then wait for user input.
-
-user clicking on color will add a number to a second string. this string = user string
-
-if user string does not = computer string then game over.
-
-otherwise game continues. computer adds another number to string and displays original pattern + 1 more number.
-
-*/
 	var red = 1;
 	var blue = 2;
 	var green = 3;
@@ -39,69 +9,103 @@ otherwise game continues. computer adds another number to string and displays or
 	var pattern = [];
 	var userPattern = [];
 	var buttons = $(".buttons")
+	var gameOvervar;
 
 
 
 
-	$(".buttons").click(addColorToUserPattern);
+
+
 
 
 	function addColorToPattern(){
+		console.log("addColorToPattern has been called")
 		randomNum = Math.floor(Math.random() * 4) + 1;
 		pattern.push(randomNum)
 		console.log("adding " + randomNum + " to array");
-		animatePattern()
-
+		console.log("current pattern array is " + pattern)
+		console.log("current user pattern array is " + userPattern)
+		setTimeout(function(){
+			animatePattern()
+		}, 1000)
 	}
+
+
 
 	function addColorToUserPattern(){
+		console.log("addColorToUserPattern has been called")
 		userPattern.push(this.dataset.value);
 			$(this).css("opacity", "1");
-			console.log(this);
-			setTimeout(function(){
-				$(this).css("opacity", ".5");
-				console.log(this);
+			console.log("=============this opacity is totally 1 now")
+			comparePatterns()
+			if (gameOvervar == true) {
+				$(this).css("opacity", ".2");
+			} else {
+				console.log(gameOvervar + " is totally false")
 				setTimeout(function(){
-					if (pattern.length == userPattern.length) {
-					comparePatterns();	
-					}
-				}, 2000);
-			}.bind(this), 1000);		
-	}
-
-
-	function comparePatterns () {
-		// var userString =
-		if (userPattern.toString() == pattern.toString()) {
-			addColorToPattern();
-			userPattern = [];
-			console.log("success");
-		} else {
-			console.log("wrong")
-			gameOver();
+					$(this).css("opacity", ".5");
+					console.log("changing opactiy of this to .5")
+				}.bind(this), 300);
+			}
 		}
-	};
+	function comparePatterns(){
+		if (pattern.length == userPattern.length) {
+			console.log("current pattern array is " + pattern)
+			console.log("current user pattern array is " + userPattern)
+			if (userPattern.toString() === pattern.toString()) {
+				console.log("comparePatterns has been called")
+				console.log("success");
+				userPattern = [];
+				addColorToPattern();
+			} else {
+				console.log("userpattern does not equal pattern")
+				gameOver();
+			}
+		}
+
+
 	function gameOver() {
+		gameOvervar = true
+		console.log("GAME OVER FUNCTION HAS BEEN CALLED")
+		buttons.off("click", addColorToUserPattern);
 		pattern = [];
 		userPattern = [];
+		buttons.css("opacity", ".2");
 	}
 
 	$("#start").click(startGame);
 
 	function startGame(){
+		gameOvervar = false
+		console.log("startGame has been called")
+		buttons.on("click", addColorToUserPattern);
+		buttons.css("opacity", ".5");
 		pattern = [];
 		userPattern = [];
 		addColorToPattern()
-
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 	function animatePattern() {
+		console.log("animatePattern has been called")
+			var delay = 450;
 			var count = 0;
-			var delay = 850;
 			var intervalId = setInterval(function () {
 				if (count >= pattern.length)  {
 					clearInterval(intervalId);
+					console.log("clearInterval(intervalID) has been called")
 				}
 					switch (pattern[count]) {
 						case 1:
@@ -109,36 +113,32 @@ otherwise game continues. computer adds another number to string and displays or
 							$("#red").css("opacity", "1");
 							setTimeout(function(){
 								$("#red").css("opacity", ".5");
-							}, 800);
+							}, 400);
 							count++;
-							console.log(count);
 							break;
 						case 2:
 							console.log("animating blue current count is " + count)
 							$("#blue").css("opacity", "1");
 								setTimeout(function(){
 								$("#blue").css("opacity", ".5");
-							}, 800);
+							}, 400);
 							count++;
-							console.log(count);
 							break;
 						case 3:
 							console.log("animating green current count is " + count)
 							$("#green").css("opacity", "1");
 								setTimeout(function(){
 								$("#green").css("opacity", ".5");
-							}, 800);
+							}, 400);
 							count++;
-							console.log(count);
 							break;
 						case 4:
-							console.log("animating yellow")
+							console.log("animating yellow current count is " + count)
 							$("#yellow").css("opacity", "1");
 								setTimeout(function(){
 								$("#yellow").css("opacity", ".5");
-							}, 800);
+							}, 400);
 							count++;
-							console.log(count);
 							break;
 						}
 		}, delay);
