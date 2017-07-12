@@ -9,31 +9,30 @@
 	var delay = 450;
 	var tran = (.72 * delay);
 
-// 	$(document).keyup(function(e) {
-//   if(e.which == 82) {
-//    var val = 1;
-// 	 addColorToUserPattern(val);
-//   }
-// 	});
-// $(document).keyup(function(e) {
-//   if(e.which == 70) {
-//    var val = 2;
-// 	 addColorToUserPattern(val);
-//   }
-// 	});
-// $(document).keyup(function(e) {
-//   if(e.which == 85) {
-//    var val = 3;
-// 	 addColorToUserPattern(val);
-//   }
-// 	});
-// $(document).keyup(function(e) {
-//   if(e.which == 74) {
-//    var val = 4;
-// 	 addColorToUserPattern(val);
-//   }
-// 	});
+	$(document).keyup(function(e) {
+  if(e.which == 82) {
+   var button = $("#red")[0]
+	 addKeyToUserPattern(button);
+  }
+	if(e.which == 70) {
+		var button = $("#green")[0]
+		addKeyToUserPattern(button);
+	}
+	if(e.which == 85) {
+		var button = $("#blue")[0]
+		addKeyToUserPattern(button);
+	}
+	if(e.which == 74){
+		var button = $("#yellow")[0]
+		addKeyToUserPattern(button);
+	}
+	});
 
+	// function addKeyToUserPattern(button) {
+	// 	// console.log(button.data("value"));
+	// 	console.log(button);
+	//
+	// }
 
 	function startGame(){
 		gameOvervar = false
@@ -104,13 +103,26 @@
 		}, delay);
 	}
 
+	function addKeyToUserPattern(button) {
+		console.log("addKeyToUserPattern has been called")
+		userPattern.push(button.dataset.value);
+			$(this).css("opacity", "1");
+			console.log("=============this opacity is totally 1 now")
+			console.log(this);
+			comparePatterns()
+			animateUser()
+	}
 
 	function addColorToUserPattern(){
 		console.log("addColorToUserPattern has been called")
 		userPattern.push(this.dataset.value);
 			$(this).css("opacity", "1");
 			console.log("=============this opacity is totally 1 now")
+			console.log(this);
 			comparePatterns()
+			animateUser()
+		}
+	function animateUser() {
 			if (gameOvervar == true) {
 				$(this).css("opacity", ".2");
 			} else {
@@ -162,6 +174,8 @@
 
 
 	function gameOver() {
+		console.log(pattern);
+		console.log(userPattern);
 		gameOvervar = true
 		console.log("GAME OVER FUNCTION HAS BEEN CALLED")
 		buttons.off("click", addColorToUserPattern);
