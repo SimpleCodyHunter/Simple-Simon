@@ -6,6 +6,18 @@ body {
 	height: 600px;
 	margin: 20px;
 }
+#title{
+	background-image: url("../img/streetSimonTitle.gif");
+	width: 300px;
+	height: 165px;
+	top: 345px;
+	right: 18px;
+	position: absolute;
+	background-size: 300px 165px;
+	background-repeat: no-repeat;
+
+}
+
 #ryu {
 	height: 265px;
 	width: 116px;
