@@ -9,6 +9,24 @@
 	var delay = 450;
 	var tran = (.72 * delay);
 
+	(function startScreen(){
+		$("#container").css("display", "none");
+		$(document).on("keydown", pressSpaceToStart)
+
+		function pressSpaceToStart(e) {
+			$(document).off("keydown")
+				e.preventDefault();
+	  		if(e.which == 32) {
+	   		runGame();
+			}
+		};
+	}());
+
+
+	function runGame() {
+		$("#startScreen").css("display", "none");
+		$("#container").css("display", "block");
+
 	$(document).on("keydown", userKeyEvent)
 
 	function userKeyEvent(e) {
@@ -150,10 +168,6 @@
 		$("#start").on("click", startGame);
 	}
 
-
 	$("#start").on("click", startGame);
 
-
-
-
-// });
+};

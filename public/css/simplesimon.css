@@ -1,5 +1,6 @@
 body {
 	background-color: #000;
+	margin: 0px;
 }
 @font-face {
   font-family: "PressStart2P";
@@ -21,13 +22,41 @@ body {
 	background-repeat: no-repeat;
 
 }
+#startScreen{
+	height: 100vh;
+	width: 100vw;
+	background-color: black;
+	margin: none;
+	padding: none;
+}
+#logo {
+	content: url(../img/title.gif);
+	width: 760px;
+	position: absolute;
+	left: 25%;
+	top: 7vh;
+	animation: logofade 3s;
+}
+@keyframes logofade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#pressSpacebar {
+	content: url(../img/start.png);
+	width: 590px;
+	position: absolute;
+	left: 28vw;
+	top: 80vh;
+	animation: logofade 3s;
+}
 
 #ryu {
 	height: 339px;
   width: 188px;
   top: 118px;
   left: 124px;
-  position: absolute;
+  /*position: absolute;
   background-image: url(../img/ryuSpriteSheet.png);
   background-repeat: no-repeat;
   background-size: 6000px 3769px;
@@ -39,7 +68,7 @@ body {
 
 @keyframes ryu {
 	100%{
-			background-position-x:-776px;
+			background-position-x:-776px;*/
 	}
 }
 
