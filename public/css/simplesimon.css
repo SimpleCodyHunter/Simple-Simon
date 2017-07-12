@@ -28,7 +28,7 @@ body {
   top: 118px;
   left: 124px;
   position: absolute;
-  background-image: url(../img/ryuSpriteSheet.png);
+/*  background-image: url(../img/ryuSpriteSheet.png);
   background-repeat: no-repeat;
   background-size: 6000px 3769px;
   background-position: -5px -51px;
@@ -40,7 +40,7 @@ body {
 @keyframes ryu {
 	100%{
 			background-position-x:-776px;
-	}
+	}*/
 }
 
 .buttons {
