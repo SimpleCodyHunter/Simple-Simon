@@ -38,6 +38,7 @@ $(document).keyup(function(e) {
 	function startGame(){
 		gameOvervar = false
 		console.log("startGame has been called")
+		$("#start").off("click", startGame);
 		buttons.on("click", addColorToUserPattern);
 		buttons.css("opacity", ".5");
 		pattern = [];
@@ -108,36 +109,36 @@ $(document).keyup(function(e) {
 	function addColorToUserPattern(){
 		console.log("addColorToUserPattern has been called")
 		userPattern.push(this.dataset.value);
-			$(this).css("opacity", "1");
-			console.log("=============this opacity is totally 1 now")
-			comparePatterns()
-			if (gameOvervar == true) {
-				$(this).css("opacity", ".2");
-			} else {
-				console.log(gameOvervar + " is totally false")
-				setTimeout(function(){
-					$(this).css("opacity", ".5");
-					console.log("changing opactiy of this to .5")
-				}.bind(this), 300);
-			}
+		$(this).css("opacity", "1");
+		console.log("=============this opacity is totally 1 now")
+		comparePatterns()
+		if (gameOvervar == true) {
+			$(this).css("opacity", ".2");
+		} else {
+			console.log(gameOvervar + " is totally false")
+			setTimeout(function(){
+				$(this).css("opacity", ".5");
+				console.log("changing opactiy of this to .5")
+			}.bind(this), 300);
 		}
+	}
 
-		function addKeyPressToUserPattern(val){
-			console.log("addKeyPressToUserPattern has been called")
-			userPattern.push(val);
-				$(this).css("opacity", "1");
-				console.log("=============this opacity is totally 1 now")
-				comparePatterns()
-				if (gameOvervar == true) {
-					$(this).css("opacity", ".2");
-				} else {
-					console.log(gameOvervar + " is totally false")
-					setTimeout(function(){
-						$(this).css("opacity", ".5");
-						console.log("changing opactiy of this to .5")
-					}.bind(this), 300);
-				}
-			}
+	function addKeyPressToUserPattern(val){
+		console.log("addKeyPressToUserPattern has been called")
+		userPattern.push(val);
+		$(this).css("opacity", "1");
+		console.log("=============this opacity is totally 1 now")
+		comparePatterns()
+		if (gameOvervar == true) {
+			$(this).css("opacity", ".2");
+		} else {
+			console.log(gameOvervar + " is totally false")
+			setTimeout(function(){
+				$(this).css("opacity", ".5");
+					console.log("changing opactiy of this to .5")
+			}.bind(this), 300);
+		}
+	}
 
 	function animateButton() {
 
@@ -169,27 +170,12 @@ $(document).keyup(function(e) {
 		userPattern = [];
 		delay = 450;
 		buttons.css("opacity", ".2");
+		$("#start").on("click", startGame);
+
 	}
 
 
-	$("#start").click(startGame);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	$("#start").on("click", startGame);
 
 
 
