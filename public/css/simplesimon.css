@@ -1,6 +1,10 @@
 body {
 	background-color: #000;
 }
+@font-face {
+  font-family: "PressStart2P";
+  src: url("/fonts/PressStart2P-Regular.ttf") format("truetype");
+}
 #container{
 	width: 1000px;
 	height: 600px;
@@ -19,36 +23,26 @@ body {
 }
 
 #ryu {
-	height: 265px;
-	width: 116px;
-	top: 77px;
-	left: 156px;
-	position: absolute;
-	background-image: url("../img/ryuSpriteSheet.png");
-	background-repeat: no-repeat;
-	background-size: 3000px 3000px;
-	background-position: 12px -51px;
-}
-/*	animation: ryu 1s steps(4);
-  	animation-delay: 1s;
-  	animation-iteration-count: infinite;
-}
+	height: 339px;
+  width: 188px;
+  top: 118px;
+  left: 124px;
+  position: absolute;
+  background-image: url(../img/ryuSpriteSheet.png);
+  background-repeat: no-repeat;
+  background-size: 6000px 3769px;
+  background-position: -5px -51px;
+  animation: ryu 1s steps(4);
+  animation-delay: .5s;
+  animation-iteration-count: infinite;
+	}
+
 @keyframes ryu {
-	0% {
-	  	left:-51px;
-	}
-	25%{
-		left:-100px;
-	}
-	50%{
-		left:-150px;
-	}
-	75%{
-		left:-200px;
-	}
 	100%{
-		left:-250px;
-	}*/
+			background-position-x:-776px;
+	}
+}
+
 .buttons {
 	height: 162px;
 	width: 190px;
@@ -58,8 +52,8 @@ body {
 	opacity: .5;
 	background-image: url("../img/buttons.png");
 	background-repeat: no-repeat;
-	
-	
+
+
 }
 #red {
 	background-position: -3px -5px;
@@ -90,4 +84,10 @@ body {
 }*/
 .buttonclick {
 	opacity: 1;
+}
+#score {
+	color: orange;
+	font-family: "PressStart2P";
+	font-size: 27px;
+	margin-left: 25px;
 }
