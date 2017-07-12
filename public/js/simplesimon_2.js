@@ -28,12 +28,6 @@
 	}
 	});
 
-	// function addKeyToUserPattern(button) {
-	// 	// console.log(button.data("value"));
-	// 	console.log(button);
-	//
-	// }
-
 	function startGame(){
 		gameOvervar = false
 		console.log("startGame has been called")
@@ -106,58 +100,30 @@
 	function addKeyToUserPattern(button) {
 		console.log("addKeyToUserPattern has been called")
 		userPattern.push(button.dataset.value);
-			$(this).css("opacity", "1");
+			$(button).css("opacity", "1");
 			console.log("=============this opacity is totally 1 now")
-			console.log(this);
+			console.log(button);
 			comparePatterns()
-			animateUser()
+			animateUser(button)
 	}
 
-	function addColorToUserPattern(){
-		console.log("addColorToUserPattern has been called")
-		userPattern.push(this.dataset.value);
-			$(this).css("opacity", "1");
-			console.log("=============this opacity is totally 1 now")
-			console.log(this);
-			comparePatterns()
-			animateUser()
+	function addColorToUserPattern() {
+		addKeyToUserPattern(this)
 		}
-	function animateUser() {
+
+	function animateUser(button) {
 			if (gameOvervar == true) {
-				$(this).css("opacity", ".2");
+				$(button).css("opacity", ".2");
 			} else {
 				console.log(gameOvervar + " is totally false")
 				setTimeout(function(){
-					$(this).css("opacity", ".5");
+					$(button).css("opacity", ".5");
 					console.log("changing opactiy of this to .5")
-				}.bind(this), 300);
+				}, 300);
 			}
 		}
 
-		// function addKeyPressToUserPattern(val){
-		// 	console.log("addKeyPressToUserPattern has been called")
-		// 	userPattern.push(val);
-		// 		$(this).css("opacity", "1");
-		// 		console.log("=============this opacity is totally 1 now")
-		// 		comparePatterns()
-		// 		if (gameOvervar == true) {
-		// 			$(this).css("opacity", ".2");
-		// 		} else {
-		// 			console.log(gameOvervar + " is totally false")
-		// 			setTimeout(function(){
-		// 				$(this).css("opacity", ".5");
-		// 				console.log("changing opactiy of this to .5")
-		// 			}.bind(this), 300);
-		// 		}
-		// 	}
-
-	function animateButton() {
-
-	}
-
-
-
-	function comparePatterns(){
+		function comparePatterns(){
 		if ((pattern.length == userPattern.length) && (userPattern.toString() === pattern.toString())) {
 			console.log("you win the round");
 			userPattern = [];
