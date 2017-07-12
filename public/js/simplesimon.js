@@ -28,12 +28,31 @@
 		$("#container").css("display", "block");
 
 	$(document).on("keydown", userKeyEvent)
+	$(document).on("keyup", userKeyInput)
 
 	function userKeyEvent(e) {
 		$(document).off("keydown")
-  		if(e.which == 82) {
+		if(e.which == 82) {
    		var button = $("#red")[0]
-	 addKeyToUserPattern(button);
+	 		animateUser(button);
+  		}
+		if(e.which == 70) {
+			var button = $("#green")[0]
+			animateUser(button);
+		}
+		if(e.which == 85) {
+			var button = $("#blue")[0]
+			animateUser(button);
+		}
+		if(e.which == 74){
+			var button = $("#yellow")[0]
+			animateUser(button);
+		}
+	};
+	function userKeyInput(e) {
+		if(e.which == 82) {
+   		var button = $("#red")[0]
+	 		addKeyToUserPattern(button);
   		}
 		if(e.which == 70) {
 			var button = $("#green")[0]
@@ -47,10 +66,9 @@
 			var button = $("#yellow")[0]
 			addKeyToUserPattern(button);
 		}
-	};
-	$(document).on("keyup", function(e){
 		$(document).on("keydown", userKeyEvent);
-	})
+	};
+
 
 
 	function startGame(){
@@ -125,7 +143,8 @@
 		userPattern.push(button.dataset.value);
 			$(button).css({"opacity": "1", "background-position-y": "-209px"});
 			comparePatterns()
-			animateUser(button)
+			// animateUser(button)
+			animateRyu(button)
 	}
 
 
@@ -143,6 +162,20 @@
 				}, 300);
 			}
 		}
+	function animateRyu(button){
+		if ($(button).is("#red")){
+			$("#ryu").html('<x-gif src="img/highPunch.gif"></x-gif>');
+		} else if ($(button).is("#blue")){
+				$("#ryu").html('<x-gif src="img/Shoryuken_200.gif"></x-gif>');
+		} else if ($(button).is("#green")){
+				$("#ryu").html('<x-gif src="img/hiKick.gif"></x-gif>');
+		} else if ($(button).is("#yellow")){
+				$("#ryu").html('<x-gif src="img/jumpKick.gif"></x-gif>');
+		} setTimeout(function(){
+		 $("#ryu").html('<x-gif src="img/idle_2.gif"></x-gif>');
+	 }, 2000);
+}
+
 
 		function comparePatterns(){
 		if ((pattern.length == userPattern.length) && (userPattern.toString() === pattern.toString())) {
