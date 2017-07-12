@@ -54,34 +54,28 @@ body {
 	margin-left: 440px;
 
 }
-#red:active {
-	background-position: -3px -209px;
-}
+
 
 #blue {
 	background-position: -405px -5px;
 
 }
-#blue:active {
-	background-position: -405px -209px;
 
-}
 #green {
 	background-position: -205px -5px;
 	margin-top: -33px;
 	margin-left: 540px;
 	clear: left;
 }
-#green:active {
-	background-position: -205px -209px;
-}
+
 #yellow {
 	background-position: -605px -5px;
 	margin-top: -33px;
 }
-#yellow:active {
-	background-position: -605px -209px;
-}
+
+/*.buttonDepress{
+	background-position-y: -209px;
+}*/
 .buttonclick {
 	opacity: 1;
 }
