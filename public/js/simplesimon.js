@@ -9,30 +9,24 @@
 	var delay = 450;
 	var tran = (.72 * delay);
 
-// 	$(document).keyup(function(e) {
-//   if(e.which == 82) {
-//    var val = 1;
-// 	 addColorToUserPattern(val);
-//   }
-// 	});
-// $(document).keyup(function(e) {
-//   if(e.which == 70) {
-//    var val = 2;
-// 	 addColorToUserPattern(val);
-//   }
-// 	});
-// $(document).keyup(function(e) {
-//   if(e.which == 85) {
-//    var val = 3;
-// 	 addColorToUserPattern(val);
-//   }
-// 	});
-// $(document).keyup(function(e) {
-//   if(e.which == 74) {
-//    var val = 4;
-// 	 addColorToUserPattern(val);
-//   }
-// 	});
+	$(document).keyup(function(e) {
+  if(e.which == 82) {
+   var button = $("#red")[0]
+	 addKeyToUserPattern(button);
+  }
+	if(e.which == 70) {
+		var button = $("#green")[0]
+		addKeyToUserPattern(button);
+	}
+	if(e.which == 85) {
+		var button = $("#blue")[0]
+		addKeyToUserPattern(button);
+	}
+	if(e.which == 74){
+		var button = $("#yellow")[0]
+		addKeyToUserPattern(button);
+	}
+	});
 
 
 	function startGame(){
@@ -106,49 +100,33 @@
 	}
 
 
-	function addColorToUserPattern(){
-		console.log("addColorToUserPattern has been called")
-		userPattern.push(this.dataset.value);
-		$(this).css("opacity", "1");
-		console.log("=============this opacity is totally 1 now")
-		comparePatterns()
-		if (gameOvervar == true) {
-			$(this).css("opacity", ".2");
-		} else {
-			console.log(gameOvervar + " is totally false")
-			setTimeout(function(){
-				$(this).css("opacity", ".5");
-				console.log("changing opactiy of this to .5")
-			}.bind(this), 300);
+	function addKeyToUserPattern(button) {
+		console.log("addKeyToUserPattern has been called")
+		userPattern.push(button.dataset.value);
+			$(button).css("opacity", "1");
+			console.log("=============this opacity is totally 1 now")
+			console.log(button);
+			comparePatterns()
+			animateUser(button)
+	}
+
+	function addColorToUserPattern() {
+		addKeyToUserPattern(this)
 		}
-	}
 
+	function animateUser(button) {
+			if (gameOvervar == true) {
+				$(button).css("opacity", ".2");
+			} else {
+				console.log(gameOvervar + " is totally false")
+				setTimeout(function(){
+					$(button).css("opacity", ".5");
+					console.log("changing opactiy of this to .5")
+				}, 300);
+			}
+		}
 
-		// function addKeyPressToUserPattern(val){
-		// 	console.log("addKeyPressToUserPattern has been called")
-		// 	userPattern.push(val);
-		// 		$(this).css("opacity", "1");
-		// 		console.log("=============this opacity is totally 1 now")
-		// 		comparePatterns()
-		// 		if (gameOvervar == true) {
-		// 			$(this).css("opacity", ".2");
-		// 		} else {
-		// 			console.log(gameOvervar + " is totally false")
-		// 			setTimeout(function(){
-		// 				$(this).css("opacity", ".5");
-		// 				console.log("changing opactiy of this to .5")
-		// 			}.bind(this), 300);
-		// 		}
-		// 	}
-
-
-	function animateButton() {
-
-	}
-
-
-
-	function comparePatterns(){
+		function comparePatterns(){
 		if ((pattern.length == userPattern.length) && (userPattern.toString() === pattern.toString())) {
 			console.log("you win the round");
 			userPattern = [];
@@ -162,7 +140,6 @@
 				gameOver();
 			}
 		}
-
 
 	function gameOver() {
 		gameOvervar = true
