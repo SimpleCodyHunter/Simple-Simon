@@ -9,7 +9,7 @@
 	var delay = 450;
 	var tran = (.72 * delay);
 
-	(function startScreen(){
+	(function startScreen(){  //<<<<<Question -cody
 		$("#container").css("display", "none");
 		$(document).on("keydown", pressSpaceToStart)
 
@@ -23,7 +23,7 @@
 	}());
 
 
-	function runGame() {
+	function runGame() { //<<<<<<<<<Question -cody
 		$("#startScreen").css("display", "none");
 		$("#container").css("display", "block");
 
@@ -49,6 +49,8 @@
 			animateUser(button);
 		}
 	};
+
+
 	function userKeyInput(e) {
 		if(e.which == 82) {
    		var button = $("#red")[0]
@@ -91,10 +93,12 @@
 		}, 1000)
 	}
 
+
 	function roundNumber() {
 		$("#score").html("ROUND: " + pattern.length);
 		console.log(pattern.length);
 	}
+
 
 	function animatePattern() {
 		var count = 0;
@@ -143,7 +147,7 @@
 		userPattern.push(button.dataset.value);
 			$(button).css({"opacity": "1", "background-position-y": "-209px"});
 			comparePatterns()
-			// animateUser(button)
+			animateUser(button)
 			animateRyu(button)
 	}
 
@@ -162,19 +166,21 @@
 				}, 300);
 			}
 		}
+
+
 	function animateRyu(button){
 		if ($(button).is("#red")){
 			$("#ryu").html('<x-gif src="img/highPunch.gif"></x-gif>');
 		} else if ($(button).is("#blue")){
-				$("#ryu").html('<x-gif src="img/Shoryuken_200.gif"></x-gif>');
+			$("#ryu").html('<x-gif src="img/Shoryuken_200.gif"></x-gif>');
 		} else if ($(button).is("#green")){
-				$("#ryu").html('<x-gif src="img/hiKick.gif"></x-gif>');
+			$("#ryu").html('<x-gif src="img/hiKick.gif"></x-gif>');
 		} else if ($(button).is("#yellow")){
-				$("#ryu").html('<x-gif src="img/jumpKick.gif"></x-gif>');
+			$("#ryu").html('<x-gif src="img/jumpKick.gif"></x-gif>');
 		} setTimeout(function(){
 		 $("#ryu").html('<x-gif src="img/idle_2.gif"></x-gif>');
-	 }, 2000);
-}
+	 	}, 1800);
+	}
 
 
 		function comparePatterns(){
@@ -193,14 +199,32 @@
 
 	function gameOver() {
 		gameOvervar = true
-		buttons.off("click", addColorToUserPattern);
+		$(document).off("keydown", userKeyEvent)
+		$(document).off("keyup", userKeyInput)
+		buttons.css("opacity", ".2");
+		buttons.off("mousedown", addColorToUserPattern);
 		pattern = [];
 		userPattern = [];
 		delay = 450;
-		buttons.css("opacity", ".2");
 		$("#start").on("click", startGame);
 	}
 
 	$("#start").on("click", startGame);
 
 };
+
+// if (pattern == [1, 2, 3] || pattern == [2, 3, 4, 1] || pattern == [4, 4, 3, 2] || pattern == [4, 2, 2, 2] || pattern == [4, 2, 3, 1] || pattern == [1, 1, 3, 2] ) {
+// 	buttons.off("mousedown", addColorToUserPattern);
+// 	$(document).off("keydown", userKeyEvent)
+// 	$(document).off("keyup", userKeyInput)
+// 	$("#ryu").html('<x-gif src="img/jumpKick.gif"></x-gif>');
+// } else if (pattern == [3, 2, 1, 4] || pattern == [3, 3, 2, 1] || pattern == [2, 2, 3, 2] || pattern == [1, 2, 3, 2, 1] || pattern == [1, 2, 1, 2, 1] || pattern == [2, 2, 3] || pattern == [4, 3, 2] ) {
+// 	buttons.off("mousedown", addColorToUserPattern);
+// 	$(document).off("keydown", userKeyEvent)
+// 	$(document).off("keyup", userKeyInput)
+// 	$("#ryu").html('<x-gif src="img/jumpKick.gif"></x-gif>');
+// } else if (pattern.length == 11) {
+// 	buttons.off("mousedown", addColorToUserPattern);
+// 	$(document).off("keydown", userKeyEvent)
+// 	$(document).off("keyup", userKeyInput)
+// 	$("#ryu").html('<x-gif src="img/jumpKick.gif"></x-gif>');
