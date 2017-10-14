@@ -13,9 +13,9 @@ $(document).ready(function(){
 	var hit1 = new Audio("audio/Hit_1.mp3");
 	var hit2 = new Audio("audio/Hit_2.mp3");
 	var ryu_theme = new Audio('audio/Ryu.mp3');
-	var you = new Audio('audio/you.mp3');
-	var lose = new Audio('audio/lose.mp3');
-	var die = new Audio('audio/die.mp3');
+	var you = new Audio('audio/You.mp3');
+	var lose = new Audio('audio/Lose.mp3');
+	var die = new Audio('audio/Die.mp3');
 	var fight;
 
 	( function startScreen() {  //<<<<<Question -cody
@@ -219,7 +219,7 @@ $(document).ready(function(){
 
 		if (gameOvervar == true) {
 			$("#ryu").html('<img src="img/wrong.png">');
-		} else {
+		} else if (gameOvervar == false) {
 			if ($(button).is("#red")) {
 			$("#ryu").html('<x-gif src="img/highPunch.gif"></x-gif>');
 			} else if ($(button).is("#blue")){
@@ -284,7 +284,7 @@ $(document).ready(function(){
 	function reset() {
 		
 		//fadeout ryu, display gameover
-		$("#ready").html('<img src="img/gameover.png"/>');
+		$("#ready").html('<img src="img/gameover.gif"/>');
 		$('#animateText').css('display','table');
 		$("#ready").animate({width:"300px", opacity: 1}, 500, "swing");
 		setTimeout(function(){
