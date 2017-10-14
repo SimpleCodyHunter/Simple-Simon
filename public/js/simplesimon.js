@@ -284,7 +284,7 @@ $(document).ready(function(){
 	function reset() {
 		
 		//fadeout ryu, display gameover
-		$("#ready").html('<img src="img/gameover.gif"/>');
+		$("#ready").html('<img src="img/gameover.png"/>');
 		$('#animateText').css('display','table');
 		$("#ready").animate({width:"300px", opacity: 1}, 500, "swing");
 		setTimeout(function(){
